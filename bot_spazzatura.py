@@ -52,7 +52,7 @@ async def oggi(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Controlliamo cosa si butta stasera (per domani)
     oggi_settimana = datetime.datetime.now().weekday()
     domani = (oggi_settimana + 1) % 7
-    tipo = calendario.get(oggi_num, "Niente")
+    tipo = calendario_fisso.get(oggi_num, "Niente")
     
     data_oggi = datetime.date.today()
     
