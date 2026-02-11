@@ -26,7 +26,8 @@ stato_giornaliero = {"fatto": False, "chi": None, "data": None}
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Ciao ragazze! Sono il vostro assistente per la spazzatura. üóëÔ∏è\nUsa /oggi per vedere cosa buttare e segnare chi lo fa.")
+    await update.message.reply_text("Ciao ragazze! 🗑️ Sono il vostro assistente per la spazzatura. Vi ricorderò ogni sera cosa buttare!")
+
 
 async def info(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Comando per scoprire l'ID del gruppo
