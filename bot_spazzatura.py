@@ -11,13 +11,13 @@ CHAT_ID_GRUPPO = '-1071202678' # Lo scoprirai col comando /info
 # Calendario dei ritiri
 # Nota: La chiave √® il giorno in cui passa il camion
 calendario = {
-    0: "Secco (Indifferenziata) üóëÔ∏è", # Luned√¨
-    1: "Umido + Vetro üçèüçæ",          # Marted√¨
-    2: "Cartone üì¶",                  # Mercoled√¨
-    3: "Umido üçè",                   # Gioved√¨
-    4: "Plastica üçº",                # Venerd√¨
+    0: "Secco (Indifferenziata) ", # Luned√¨
+    1: "Umido + Vetro",          # Marted√¨
+    2: "Cartone",                  # Mercoled√¨
+    3: "Umido",                   # Gioved√¨
+    4: "Plastica",                # Venerd√¨
     5: "Nessun ritiro domani",       # Sabato
-    6: "Umido üçè"                    # Domenica
+    6: "Umido"                    # Domenica
 }
 
 # Variabile per tracciare chi ha buttato la spazzatura oggi
@@ -47,7 +47,7 @@ async def oggi(update: Update, context: ContextTypes.DEFAULT_TYPE):
         stato_giornaliero["data"] = data_oggi
 
     if tipo == "Nessun ritiro domani":
-        await update.message.reply_text("Stasera non c'√® bisogno di uscire nulla! üéâ")
+        await update.message.reply_text("Stasera non c'√® bisogno di uscire nulla! ")
         return
 
     text = f"Stasera bisogna esporre: *{tipo}*"
@@ -56,12 +56,12 @@ async def oggi(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text += f"\n\n‚úÖ Gi√† fatto da {stato_giornaliero['chi']}!"
         await update.message.reply_text(text, parse_mode='Markdown')
     else:
-        keyboard = [[InlineKeyboardButton("L'ho portata io! üôã‚Äç‚ôÄÔ∏è", callback_data='fatto')]]
+        keyboard = [[InlineKeyboardButton("L'ho portata iooooo yeeee!", callback_data='fattoooo')]]
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(text, reply_markup=reply_markup, parse_mode='Markdown')
 
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_data
+    query = update.callback_query
     await query.answer()
     
     user_name = query.from_user.first_name
@@ -69,7 +69,7 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     stato_giornaliero["chi"] = user_name
     stato_giornaliero["data"] = datetime.date.today()
     
-    await query.edit_message_text(text=f"Grazie {user_name}! üåü La spazzatura √® stata portata fuori.")
+    await query.edit_message_text(text=f"Grazieeee  {user_name}! La spazzatura √® stata portata fuoriiii superlussoooo.")
 
 async def promemoria_serale(context: ContextTypes.DEFAULT_TYPE):
     # Questa funzione viene chiamata automaticamente ogni sera
@@ -77,7 +77,7 @@ async def promemoria_serale(context: ContextTypes.DEFAULT_TYPE):
     tipo = calendario.get(domani)
     
     if tipo != "Nessun ritiro domani":
-        text = f"üîî *PROMEMORIA STASERA*\nBisogna buttare: *{tipo}*\n\nChi di voi la porta fuori? Scrivete /oggi per segnarlo!"
+        text = f" *PROMEMORIA STASERA*\nBisogna buttare: *{tipo}*\n\nChi di voi la porta fuori? Scrivete /oggi per segnarlo!"
         await context.bot.send_message(chat_id=CHAT_ID_GRUPPO, text=text, parse_mode='Markdown')
 
 def main():
