@@ -87,7 +87,7 @@ def main():
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("info", info))
     application.add_handler(CommandHandler("oggi", oggi))
-    application.add_handler(CallbackdataHandler(button_callback))
+    application.add_handler(CallbackQueryHandler(button_callback))
 
     # Programmazione promemoria: ogni giorno alle 20:00
     job_queue = application.job_queue
