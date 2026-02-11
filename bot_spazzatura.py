@@ -4,7 +4,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
 
 # --- CONFIGURAZIONE ---
-TOKEN = '8417218844:AAGtp-eA6WefQXFCu4jmGRyR2ipvYKtSvfE'
+TOKEN = '8417218844:AAEZgjFxH2deahAN7GeNuOjhoeNdnYugNY0'
 
 CHAT_ID_GRUPPO = '-1071202678' # Lo scoprirai col comando /info
 
