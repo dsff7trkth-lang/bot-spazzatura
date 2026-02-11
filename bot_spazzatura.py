@@ -8,16 +8,16 @@ TOKEN = '8417218844:AAGtp-eA6WefQXFCu4jmGRyR2ipvYKtSvfE'
 
 CHAT_ID_GRUPPO = '-1071202678' # Lo scoprirai col comando /info
 
-# Calendario dei ritiri
-# Nota: La chiave √® il giorno in cui passa il camion
+# 0=Lunedì, 1=Martedì, 2=Mercoledì, 3=Giovedì, 4=Venerdì, 5=Sabato, 6=Domenica
+# Il bot guarda il giorno di DOMANI per dirti cosa esporre STASERA
 calendario = {
-    0: "Secco (Indifferenziata) ", # Luned√¨
-    1: "Umido + Vetro",          # Marted√¨
-    2: "Cartone",                  # Mercoled√¨
-    3: "Umido",                   # Gioved√¨
-    4: "Plastica",                # Venerd√¨
-    5: "Nessun ritiro domani",       # Sabato
-    6: "Umido"                    # Domenica
+    0: "Secco (Indifferenziata) 🗑️", # Lunedì sera per Martedì
+    1: "Umido + Vetro 🍏🍾",         # Martedì sera per Mercoledì
+    2: "Cartone 📦",                 # Mercoledì sera per Giovedì (OGGI!)
+    3: "Umido 🍏",                  # Giovedì sera per Venerdì
+    4: "Plastica 🍼",                # Venerdì sera per Sabato
+    5: "Niente, riposo! 😴",         # Sabato sera per Domenica
+    6: "Umido 🍏"                   # Domenica sera per Lunedì
 }
 
 # Variabile per tracciare chi ha buttato la spazzatura oggi
