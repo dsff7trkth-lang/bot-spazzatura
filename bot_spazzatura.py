@@ -56,7 +56,7 @@ async def oggi(update: Update, context: ContextTypes.DEFAULT_TYPE):
         text += f"\n\n‚úÖ Gi√† fatto da {stato_giornaliero['chi']}!"
         await update.message.reply_text(text, parse_mode='Markdown')
     else:
-        keyboard = [[InlineKeyboardButton("L'ho portata io! üôã‚Äç‚ôÄÔ∏è", callback_query_data='fatto')]]
+        keyboard = [[InlineKeyboardButton("L'ho portata io! üôã‚Äç‚ôÄÔ∏è", callback_data='fatto')]]
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(text, reply_markup=reply_markup, parse_mode='Markdown')
 
