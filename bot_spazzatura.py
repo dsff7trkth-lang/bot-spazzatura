@@ -61,7 +61,7 @@ async def oggi(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(text, reply_markup=reply_markup, parse_mode='Markdown')
 
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
+    query = update.callback_data
     await query.answer()
     
     user_name = query.from_user.first_name
@@ -87,7 +87,7 @@ def main():
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("info", info))
     application.add_handler(CommandHandler("oggi", oggi))
-    application.add_handler(CallbackQueryHandler(button_callback))
+    application.add_handler(CallbackdataHandler(button_callback))
 
     # Programmazione promemoria: ogni giorno alle 20:00
     job_queue = application.job_queue
