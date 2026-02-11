@@ -8,17 +8,32 @@ TOKEN = '8417218844:AAGtp-eA6WefQXFCu4jmGRyR2ipvYKtSvfE'
 
 CHAT_ID_GRUPPO = '-1071202678' # Lo scoprirai col comando /info
 
-# 0=Lunedì, 1=Martedì, 2=Mercoledì, 3=Giovedì, 4=Venerdì, 5=Sabato, 6=Domenica
-# Il bot guarda il giorno di DOMANI per dirti cosa esporre STASERA
-calendario = {
-    0: "Secco (Indifferenziata) 🗑️", # Lunedì sera per Martedì
-    1: "Umido + Vetro 🍏🍾",         # Martedì sera per Mercoledì
-    2: "Cartone 📦",                 # Mercoledì sera per Giovedì (OGGI!)
-    3: "Umido 🍏",                  # Giovedì sera per Venerdì
-    4: "Plastica 🍼",                # Venerdì sera per Sabato
-    5: "Niente, riposo! 😴",         # Sabato sera per Domenica
-    6: "Umido 🍏"                   # Domenica sera per Lunedì
+# --- NUOVO CALENDARIO (Mercoledì = Cartone) ---
+calendario_fisso = {
+    0: "Secco (Indifferenziata) 🗑️", # Lunedì
+    1: "Umido + Vetro 🍏🍾",         # Martedì
+    2: "Cartone 📦",                 # Mercoledì (OGGI!)
+    3: "Umido 🍏",                  # Giovedì
+    4: "Plastica 🍼",                # Venerdì
+    5: "Niente, riposo! 😴",         # Sabato
+    6: "Umido 🍏"                   # Domenica
 }
+
+async def oggi(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # Prende il numero del giorno di oggi (Lunedì=0, Martedì=1, Mercoledì=2...)
+    oggi_num = datetime.datetime.now().weekday()
+    
+    # Prende il materiale dal calendario usando il numero di oggi
+    tipo = calendario_fisso.get(oggi_num, "Niente")
+    
+    keyboard = [[InlineKeyboardButton("L'ho portata io! 🙋‍♀️", callback_data='fatto')]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    
+    await update.message.reply_text(
+        f"Oggi è il turno di: *{tipo}*\nChi la butta?", 
+        reply_markup=reply_markup, 
+        parse_mode='Markdown'
+    )
 
 # Variabile per tracciare chi ha buttato la spazzatura oggi
 stato_giornaliero = {"fatto": False, "chi": None, "data": None}
